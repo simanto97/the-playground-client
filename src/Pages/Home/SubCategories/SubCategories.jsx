@@ -13,21 +13,21 @@ const SubCategories = () => {
       .then((data) => {
         setRegularCars(data);
       });
-  });
+  },[]);
   useEffect(() => {
     fetch("http://localhost:5000/sports-car")
       .then((res) => res.json())
       .then((data) => {
         setSportsCars(data);
       });
-  });
+  },[]);
   useEffect(() => {
     fetch("http://localhost:5000/fire-trucks")
       .then((res) => res.json())
       .then((data) => {
         setFireTrucks(data);
       });
-  });
+  },[]);
   return (
     <div className="grow my-8">
       <Tabs>
