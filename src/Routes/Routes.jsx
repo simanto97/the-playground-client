@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import SubCategories from "../Pages/Home/SubCategories/SubCategories";
 import AllToysLayout from "../Layout/AllToysLayout";
+import SingleToyLayout from "../Layout/SingleToyLayout";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,12 @@ const router = createBrowserRouter([
   {
     path: "/all-toys",
     element: <AllToysLayout></AllToysLayout>,
+  },
+  {
+    path: "/all-toys/:id",
+    element: <SingleToyLayout></SingleToyLayout>,
+    loader: ({ params }) =>
+      fetch(`http://localhost:5000/all-toys/${params.id}`),
   },
 ]);
 export default router;

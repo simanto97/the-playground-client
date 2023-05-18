@@ -19,13 +19,14 @@ const CategoryCard = ({ car }) => {
           </p>
           <div>
             <Rating
+              className="text-orange-700"
               placeholderRating={rating}
               readonly
               emptySymbol={<FaRegStar></FaRegStar>}
               placeholderSymbol={<FaStar></FaStar>}
               fullSymbol={<FaStar></FaStar>}
             ></Rating>{" "}
-            <span>{rating}</span>
+            <span className="text-orange-700 ml-1">{rating}</span>
           </div>
           <Link to={`/all-toys/${_id}`}>
             <button className="btn btn-primary">View Details</button>
