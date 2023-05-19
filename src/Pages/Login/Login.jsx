@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImage from "../../assets/authentication/authentication.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
 import GoogleAuth from "../../Shared/GoogleAuth/GoogleAuth";
 
 const Login = () => {
   const { signIn, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,6 +18,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
+        navigate(from, { replace: true });
         setUser(loggedUser);
       })
       .catch((error) => console.log(error));

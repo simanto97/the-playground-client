@@ -5,6 +5,7 @@ import AllToysLayout from "../Layout/AllToysLayout";
 import SingleToyLayout from "../Layout/SingleToyLayout";
 import LoginLayout from "../Layout/LoginLayout";
 import RegisterLayout from "../Layout/RegisterLayout";
+import SecretRoute from "./SecretRoute";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/all-toys/:id",
-    element: <SingleToyLayout></SingleToyLayout>,
+    element: (
+      <SecretRoute>
+        <SingleToyLayout></SingleToyLayout>
+      </SecretRoute>
+    ),
     loader: ({ params }) =>
       fetch(`http://localhost:5000/all-toys/${params.id}`),
   },
