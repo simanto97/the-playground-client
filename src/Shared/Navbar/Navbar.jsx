@@ -20,6 +20,16 @@ const Navbar = () => {
       <li>
         <Link to="/all-toys">All Toys</Link>
       </li>
+      {user && (
+        <li>
+          <Link to="/add-toy">Add Toy</Link>
+        </li>
+      )}
+      {user && (
+        <li>
+          <Link to="/my-toys">My Toys</Link>
+        </li>
+      )}
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
@@ -53,7 +63,7 @@ const Navbar = () => {
           </ul>
         </div>
         <img src={logo} alt="" />
-        <a className="btn btn-ghost normal-case text-2xl hidden lg:block">
+        <a className="btn btn-ghost normal-case text-xl hidden lg:block">
           The PlayGround
         </a>
       </div>

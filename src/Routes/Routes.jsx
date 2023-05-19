@@ -6,6 +6,7 @@ import SingleToyLayout from "../Layout/SingleToyLayout";
 import LoginLayout from "../Layout/LoginLayout";
 import RegisterLayout from "../Layout/RegisterLayout";
 import SecretRoute from "./SecretRoute";
+import AddToyLayout from "../Layout/AddToyLayout";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
     ),
     loader: ({ params }) =>
       fetch(`http://localhost:5000/all-toys/${params.id}`),
+  },
+  {
+    path: "/add-toy",
+    element: <AddToyLayout></AddToyLayout>,
   },
   {
     path: "/login",
