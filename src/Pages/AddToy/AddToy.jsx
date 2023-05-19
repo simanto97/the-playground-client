@@ -11,7 +11,6 @@ const AddToy = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     fetch("http://localhost:5000/add-toy", {
       method: "POST",
       headers: {
@@ -22,7 +21,7 @@ const AddToy = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("User created Successfully", data.insertedId);
+          alert("Car added Successfully", data.insertedId);
         }
       });
   };

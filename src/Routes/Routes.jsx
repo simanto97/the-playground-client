@@ -7,6 +7,7 @@ import LoginLayout from "../Layout/LoginLayout";
 import RegisterLayout from "../Layout/RegisterLayout";
 import SecretRoute from "./SecretRoute";
 import AddToyLayout from "../Layout/AddToyLayout";
+import MyToysLayout from "../Layout/MyToysLayout";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/add-toy",
-    element: <AddToyLayout></AddToyLayout>,
+    element: (
+      <SecretRoute>
+        <AddToyLayout></AddToyLayout>
+      </SecretRoute>
+    ),
+  },
+  {
+    path: "/my-toys",
+    element: (
+      <SecretRoute>
+        <MyToysLayout></MyToysLayout>
+      </SecretRoute>
+    ),
   },
   {
     path: "/login",

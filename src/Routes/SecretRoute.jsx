@@ -5,7 +5,6 @@ import { Navigate } from "react-router-dom";
 const SecretRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   if (loading) {
-    console.log("loading");
     return (
       <div className="mt-8 flex justify-center items-center">
         <p className="text-5xl">Loading...</p>
