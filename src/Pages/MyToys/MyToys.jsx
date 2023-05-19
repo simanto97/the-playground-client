@@ -41,6 +41,7 @@ const MyToys = () => {
               <th>Available Quantity</th>
               <th></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -57,6 +58,11 @@ const MyToys = () => {
                     <button className="btn btn-outline btn-info">
                       Details
                     </button>
+                  </Link>
+                </td>
+                <td>
+                  <Link to={`/update-toy/${toy._id}`}>
+                    <button className="btn btn-outline btn-info">Update</button>
                   </Link>
                 </td>
                 <td>

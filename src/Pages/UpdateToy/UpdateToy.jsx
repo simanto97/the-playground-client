@@ -1,18 +1,30 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../providers/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 
-const AddToy = () => {
-  const { user } = useContext(AuthContext);
+const UpdateToy = () => {
+  const selectedToy = useLoaderData();
+  //   console.log(selectedToy[0]);
+  const {
+    _id,
+    image,
+    rating,
+    toy_name,
+    seller_name,
+    seller_email,
+    price,
+    available_quantity,
+  } = selectedToy[0];
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/add-toy", {
-      method: "POST",
+    fetch(`http://localhost:5000/update-toy/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -20,13 +32,13 @@ const AddToy = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          alert("Car added Successfully", data.insertedId);
+        if (data.modifiedCount > 0) {
+          alert("Car updated Successfully");
         }
       });
   };
+
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <div className="card card-compact m-6 md:w-3/4 md:h-[300px] mx-auto border bg-base-100 shadow-xl">
       <form
         className="space-y-2 grid md:grid-cols-2"
@@ -37,7 +49,7 @@ const AddToy = () => {
           <span>Pic URL</span>
           <input
             className="input input-bordered"
-            defaultValue=""
+            defaultValue={image}
             {...register("image", { required: true })}
           />
         </label>
@@ -47,6 +59,7 @@ const AddToy = () => {
           <span>Toy Name</span>
           <input
             className="input input-bordered"
+            defaultValue={toy_name}
             {...register("toy_name", { required: true })}
           />
         </label>
@@ -54,7 +67,7 @@ const AddToy = () => {
           <span>Seller Name</span>
           <input
             className="input input-bordered"
-            defaultValue={user?.displayName}
+            defaultValue={seller_name}
             {...register("seller_name", { required: true })}
           />
         </label>
@@ -62,7 +75,7 @@ const AddToy = () => {
           <span>Seller Email</span>
           <input
             className="input input-bordered"
-            defaultValue={user?.email}
+            defaultValue={seller_email}
             {...register("seller_email", { required: true })}
           />
         </label>
@@ -103,6 +116,7 @@ const AddToy = () => {
             {...register("available_quantity", { required: true })}
           />
         </label>
+
         <label className="input-group">
           <span>Description</span>
           <textarea
@@ -112,10 +126,10 @@ const AddToy = () => {
           />
         </label>
 
-        <input className="btn btn-primary" type="submit" />
+        <input className="btn btn-info" type="submit" value="Update" />
       </form>
     </div>
   );
 };
 
-export default AddToy;
+export default UpdateToy;

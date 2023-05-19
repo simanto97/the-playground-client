@@ -8,6 +8,7 @@ import RegisterLayout from "../Layout/RegisterLayout";
 import SecretRoute from "./SecretRoute";
 import AddToyLayout from "../Layout/AddToyLayout";
 import MyToysLayout from "../Layout/MyToysLayout";
+import UpdateToyLayout from "../Layout/UpdateToyLayout";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,16 @@ const router = createBrowserRouter([
         <MyToysLayout></MyToysLayout>
       </SecretRoute>
     ),
+  },
+  {
+    path: "/update-toy/:id",
+    element: (
+      <SecretRoute>
+        <UpdateToyLayout></UpdateToyLayout>
+      </SecretRoute>
+    ),
+    loader: ({ params }) =>
+      fetch(`http://localhost:5000/all-toys/${params.id}`),
   },
   {
     path: "/login",
