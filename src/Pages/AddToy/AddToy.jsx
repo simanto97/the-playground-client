@@ -10,7 +10,22 @@ const AddToy = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    fetch("http://localhost:5000/add-toy", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("User created Successfully", data.insertedId);
+        }
+      });
+  };
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <div className="card card-compact m-6 md:w-3/4 h-[300px] mx-auto border bg-base-100 shadow-xl">
