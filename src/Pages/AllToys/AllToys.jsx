@@ -52,7 +52,7 @@ const AllToys = () => {
           </thead>
           <tbody>
             {cars.map((car, index) => (
-              <tr>
+              <tr key={index}>
                 <th>{index + 1}</th>
                 <td>{car?.toy_name}</td>
                 <td>{car?.seller_name}</td>
