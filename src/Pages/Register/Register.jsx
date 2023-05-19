@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import registerImage from "../../assets/authentication/authentication.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
+import GoogleAuth from "../../Shared/GoogleAuth/GoogleAuth";
 
 const Register = () => {
   const { createUser, updateUserProfile, setUser } = useContext(AuthContext);
@@ -105,6 +106,7 @@ const Register = () => {
               </Link>
             </p>
           </form>
+          <GoogleAuth></GoogleAuth>
         </div>
       </div>
     </div>

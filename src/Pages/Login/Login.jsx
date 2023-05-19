@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import loginImage from "../../assets/authentication/authentication.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
+import GoogleAuth from "../../Shared/GoogleAuth/GoogleAuth";
 
 const Login = () => {
   const { signIn, setUser } = useContext(AuthContext);
@@ -64,6 +65,7 @@ const Login = () => {
               </Link>
             </p>
           </form>
+          <GoogleAuth></GoogleAuth>
         </div>
       </div>
     </div>
