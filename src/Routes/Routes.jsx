@@ -9,6 +9,8 @@ import SecretRoute from "./SecretRoute";
 import AddToyLayout from "../Layout/AddToyLayout";
 import MyToysLayout from "../Layout/MyToysLayout";
 import UpdateToyLayout from "../Layout/UpdateToyLayout";
+import ErrorPage from "../Pages/Error/ErrorPage";
+import BlogsLayout from "../Layout/BlogsLayout";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterLayout></RegisterLayout>,
+  },
+  {
+    path: "/blogs",
+    element: <BlogsLayout></BlogsLayout>,
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
 export default router;
