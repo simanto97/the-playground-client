@@ -29,7 +29,7 @@ const SubCategories = () => {
       });
   }, []);
   return (
-    <div className="grow my-8">
+    <div className="grow my-8 mx-1">
       <Tabs>
         <TabList>
           <Tab>Regular Cars</Tab>

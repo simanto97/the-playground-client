@@ -4,6 +4,8 @@ import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";
 import Carousel from "../Pages/Home/Carousel/Carousel";
 import Aside from "../Pages/Home/Aside/Aside";
+import Gallery from "../Pages/Home/Gallery/Gallery";
+import Customers from "../Pages/Home/Customers/Customers";
 
 const Main = () => {
   return (
@@ -14,6 +16,8 @@ const Main = () => {
         <Outlet></Outlet>
         <Aside></Aside>
       </div>
+      <Customers></Customers>
+      <Gallery></Gallery>
       <Footer></Footer>
     </div>
   );
