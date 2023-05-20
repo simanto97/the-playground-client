@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const UpdateToy = () => {
   const selectedToy = useLoaderData();
@@ -36,7 +37,7 @@ const UpdateToy = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          alert("Car updated Successfully");
+          toast("Car updated Successfully");
         }
       });
   };
@@ -56,7 +57,6 @@ const UpdateToy = () => {
             {...register("image", { required: true })}
           />
         </label>
-
         {/* include validation with required or other standard HTML validation rules */}
         <label className="input-group">
           <span>Toy Name</span>
@@ -83,7 +83,6 @@ const UpdateToy = () => {
           />
         </label>
         {/* errors will return when field validation fails  */}
-
         <label className="input-group">
           <span>Sub Category</span>
           <select
@@ -95,7 +94,6 @@ const UpdateToy = () => {
             <option value="Mini Fire Trucks">Mini Fire Trucks</option>
           </select>
         </label>
-
         <label className="input-group">
           <span>Price</span>
           <input
@@ -103,7 +101,6 @@ const UpdateToy = () => {
             {...register("price", { required: true, pattern: /^[0-9]/ })}
           />
         </label>
-
         <label className="input-group">
           <span>Rating</span>
           <input
@@ -112,7 +109,6 @@ const UpdateToy = () => {
             {...register("rating", { required: true, pattern: /^0|5/ })}
           />
         </label>
-
         <label className="input-group">
           <span>Available Quantity</span>
           <input
@@ -120,7 +116,6 @@ const UpdateToy = () => {
             {...register("available_quantity", { required: true })}
           />
         </label>
-
         <label className="input-group">
           <span>Description</span>
           <textarea
@@ -129,9 +124,9 @@ const UpdateToy = () => {
             placeholder="Description max:30 words"
           />
         </label>
-
         <input className="btn btn-info" type="submit" value="Update" />
       </form>
+      <Toaster />;
     </div>
   );
 };

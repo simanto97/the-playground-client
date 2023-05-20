@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
@@ -21,7 +22,7 @@ const AddToy = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Car added Successfully", data.insertedId);
+          toast("Car added Successfully", data.insertedId);
         }
       });
   };
@@ -115,6 +116,7 @@ const AddToy = () => {
 
         <input className="btn btn-primary" type="submit" />
       </form>
+      <Toaster />;
     </div>
   );
 };
