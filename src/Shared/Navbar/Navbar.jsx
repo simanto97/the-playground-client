@@ -5,7 +5,6 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-
   const handleLogout = () => {
     logOut()
       .then()
@@ -71,6 +70,16 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
+        {user && <span>{user.displayName}</span>}
+        {user && (
+          <img
+            title={user.displayName}
+            className="rounded-full"
+            style={{ height: "50px", width: "50px" }}
+            src={user.photoURL}
+            alt="User"
+          />
+        )}
         {user ? (
           <Link to="">
             <button onClick={handleLogout} className="btn btn-primary">

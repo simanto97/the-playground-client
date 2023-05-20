@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import registerImage from "../../assets/authentication/authentication.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
 import GoogleAuth from "../../Shared/GoogleAuth/GoogleAuth";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const [accepted, setAccepted] = useState(false);
@@ -30,7 +31,7 @@ const Register = () => {
           setUser(result.user);
         })
         .catch((error) => {
-          console.log(error);
+          toast.error(error.message.split("/")[1].split(")"[0]));
         });
     }
   };
@@ -111,6 +112,7 @@ const Register = () => {
             </p>
           </form>
           <GoogleAuth></GoogleAuth>
+          <Toaster />;
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ const UpdateToy = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          toast("Car updated Successfully");
+          toast.success("Car updated Successfully");
         }
       });
   };

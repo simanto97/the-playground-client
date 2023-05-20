@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import loginImage from "../../assets/authentication/authentication.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
 import GoogleAuth from "../../Shared/GoogleAuth/GoogleAuth";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const { signIn, setUser } = useContext(AuthContext);
@@ -21,7 +22,9 @@ const Login = () => {
         navigate(from, { replace: true });
         setUser(loggedUser);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(error.message.split("/")[1].split(")"[0]));
+      });
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -70,6 +73,7 @@ const Login = () => {
             </p>
           </form>
           <GoogleAuth></GoogleAuth>
+          <Toaster />;
         </div>
       </div>
     </div>

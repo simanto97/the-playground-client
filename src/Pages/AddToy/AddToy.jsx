@@ -22,7 +22,7 @@ const AddToy = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          toast("Car added Successfully", data.insertedId);
+          toast.success("Car added Successfully", data.insertedId);
         }
       });
   };
