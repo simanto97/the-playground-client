@@ -10,7 +10,7 @@ const Main = () => {
     <div>
       <Navbar></Navbar>
       <Carousel></Carousel>
-      <div className="flex justify-between">
+      <div className="md:flex justify-between">
         <Outlet></Outlet>
         <Aside></Aside>
       </div>

@@ -8,26 +8,26 @@ const SubCategories = () => {
   const [sportsCars, setSportsCars] = useState([]);
   const [fireTrucks, setFireTrucks] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/regular-cars")
+    fetch("https://assignment-11-server-simanto97.vercel.app/regular-cars")
       .then((res) => res.json())
       .then((data) => {
         setRegularCars(data);
       });
-  },[]);
+  }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/sports-car")
+    fetch("https://assignment-11-server-simanto97.vercel.app/sports-car")
       .then((res) => res.json())
       .then((data) => {
         setSportsCars(data);
       });
-  },[]);
+  }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/fire-trucks")
+    fetch("https://assignment-11-server-simanto97.vercel.app/fire-trucks")
       .then((res) => res.json())
       .then((data) => {
         setFireTrucks(data);
       });
-  },[]);
+  }, []);
   return (
     <div className="grow my-8">
       <Tabs>

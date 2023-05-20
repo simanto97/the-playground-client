@@ -23,13 +23,16 @@ const UpdateToy = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/update-toy/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://assignment-11-server-simanto97.vercel.app/update-toy/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -85,7 +88,7 @@ const UpdateToy = () => {
           <span>Sub Category</span>
           <select
             className="select select-bordered"
-            {...register("sub_category")}
+            {...register("sub_category", { required: true })}
           >
             <option value="Regular Cars">Regular Cars</option>
             <option value="Sports Car">Sports Car</option>
@@ -97,7 +100,7 @@ const UpdateToy = () => {
           <span>Price</span>
           <input
             className="input input-bordered"
-            {...register("price", { required: true })}
+            {...register("price", { required: true, pattern: /^[0-9]/ })}
           />
         </label>
 
@@ -105,7 +108,8 @@ const UpdateToy = () => {
           <span>Rating</span>
           <input
             className="input input-bordered"
-            {...register("rating", { required: true })}
+            placeholder="Rate 0 to 5"
+            {...register("rating", { required: true, pattern: /^0|5/ })}
           />
         </label>
 
@@ -121,8 +125,8 @@ const UpdateToy = () => {
           <span>Description</span>
           <textarea
             className="input input-bordered"
-            {...register("description")}
-            placeholder="description"
+            {...register("description", { maxLength: 30 })}
+            placeholder="Description max:30 words"
           />
         </label>
 

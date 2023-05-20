@@ -7,7 +7,7 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/my-toys/${_id}`, {
+    fetch(`https://assignment-11-server-simanto97.vercel.app/my-toys/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -21,7 +21,9 @@ const MyToys = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-toys/${user.email}`)
+    fetch(
+      `https://assignment-11-server-simanto97.vercel.app/my-toys/${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);

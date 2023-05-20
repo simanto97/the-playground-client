@@ -11,7 +11,7 @@ const AddToy = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/add-toy", {
+    fetch("https://assignment-11-server-simanto97.vercel.app/add-toy", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -72,7 +72,7 @@ const AddToy = () => {
           <span>Sub Category</span>
           <select
             className="select select-bordered"
-            {...register("sub_category")}
+            {...register("sub_category", { required: true })}
           >
             <option value="Regular Cars">Regular Cars</option>
             <option value="Sports Car">Sports Car</option>
@@ -84,7 +84,7 @@ const AddToy = () => {
           <span>Price</span>
           <input
             className="input input-bordered"
-            {...register("price", { required: true })}
+            {...register("price", { required: true, pattern: /^[0-9]/ })}
           />
         </label>
 
@@ -92,7 +92,8 @@ const AddToy = () => {
           <span>Rating</span>
           <input
             className="input input-bordered"
-            {...register("rating", { required: true })}
+            placeholder="Rate 0 to 5"
+            {...register("rating", { required: true, pattern: /^0|5/ })}
           />
         </label>
 
@@ -107,8 +108,8 @@ const AddToy = () => {
           <span>Description</span>
           <textarea
             className="input input-bordered"
-            {...register("description")}
-            placeholder="description"
+            {...register("description", { maxLength: 30 })}
+            placeholder="Description max:30 words"
           />
         </label>
 

@@ -35,7 +35,9 @@ const router = createBrowserRouter([
       </SecretRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/all-toys/${params.id}`),
+      fetch(
+        `https://assignment-11-server-simanto97.vercel.app/all-toys/${params.id}`
+      ),
   },
   {
     path: "/add-toy",
@@ -61,7 +63,9 @@ const router = createBrowserRouter([
       </SecretRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:5000/all-toys/${params.id}`),
+      fetch(
+        `https://assignment-11-server-simanto97.vercel.app/all-toys/${params.id}`
+      ),
   },
   {
     path: "/login",
