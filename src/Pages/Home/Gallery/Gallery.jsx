@@ -16,6 +16,8 @@ const Gallery = () => {
       <Masonry gutter="15px">
         {images.map((image, i) => (
           <img
+            data-aos="flip-left"
+            data-aos-duration="500"
             key={i}
             src={image}
             style={{ width: "100%", display: "block", borderRadius: "10px" }}

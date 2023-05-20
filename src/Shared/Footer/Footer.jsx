@@ -4,7 +4,7 @@ import logo from "../../assets/main/logo.png";
 const Footer = () => {
   return (
     <footer className="footer bg-primary text-primary-content p-10">
-      <div>
+      <div data-aos="fade-right" data-aos-duration="1500">
         <img src={logo} alt="" />
         <p className="font-bold">
           The PlayGround ToyStore Ltd. <br />
@@ -12,14 +12,18 @@ const Footer = () => {
         </p>
         <p>Copyright © 2023 - All right reserved</p>
       </div>
-      <div className="">
+      <div className="" data-aos="fade-up" data-aos-duration="1500">
         <h4 className="text-lg">Contact Info</h4>
         <p className="m-1">Address: New Hyde Park, NY 11040</p>
         <p className="m-1">Email: example@email.com</p>
         <p className="m-1">Call: (+91)-213-666-0027</p>
       </div>
       <div>
-        <div className="grid grid-flow-col gap-4">
+        <div
+          data-aos="fade-left"
+          data-aos-duration="1500"
+          className="grid grid-flow-col gap-4"
+        >
           <a>
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -29,7 +29,11 @@ const SubCategories = () => {
       });
   }, []);
   return (
-    <div className="grow my-8 mx-1">
+    <div
+      data-aos="fade-right"
+      data-aos-duration="1000"
+      className="grow my-8 mx-1"
+    >
       <Tabs>
         <TabList>
           <Tab>Regular Cars</Tab>

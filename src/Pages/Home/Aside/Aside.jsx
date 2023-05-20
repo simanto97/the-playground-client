@@ -10,7 +10,11 @@ const Aside = () => {
       .then((data) => setNewToys(data));
   }, []);
   return (
-    <div className="md:my-6 flex flex-col items-center">
+    <div
+      data-aos="fade-left"
+      data-aos-duration="1000"
+      className="md:my-6 flex flex-col items-center"
+    >
       <h2 className="text-3xl font-bold italic my-6">New Addition :</h2>
       {newToys.map((newToy) => (
         <div className="m-4 card w-[300px] bg-base-100 shadow-xl">
