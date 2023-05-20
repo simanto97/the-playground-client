@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import registerImage from "../../assets/authentication/authentication.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
 import GoogleAuth from "../../Shared/GoogleAuth/GoogleAuth";
 
 const Register = () => {
+  const [accepted, setAccepted] = useState(false);
   const { createUser, updateUserProfile, setUser } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
@@ -32,6 +33,9 @@ const Register = () => {
           console.log(error);
         });
     }
+  };
+  const handleAccepted = (e) => {
+    setAccepted(e.target.checked);
   };
 
   return (
@@ -81,15 +85,14 @@ const Register = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
+              <label className="label text-lg">
+                <input onClick={handleAccepted} type="checkbox" name="" id="" />
+                <p className="ml-2">Accept Terms and Conditions</p>
               </label>
             </div>
             <div className="form-control mt-6">
@@ -97,6 +100,7 @@ const Register = () => {
                 className="btn btn-primary"
                 type="submit"
                 value="Register"
+                disabled={!accepted}
               />
             </div>
             <p>

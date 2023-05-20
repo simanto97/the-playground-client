@@ -6,8 +6,10 @@ import Carousel from "../Pages/Home/Carousel/Carousel";
 import Aside from "../Pages/Home/Aside/Aside";
 import Gallery from "../Pages/Home/Gallery/Gallery";
 import Customers from "../Pages/Home/Customers/Customers";
+import useTitle from "../hooks/useTitle";
 
 const Main = () => {
+  useTitle('Home')
   return (
     <div>
       <Navbar></Navbar>
