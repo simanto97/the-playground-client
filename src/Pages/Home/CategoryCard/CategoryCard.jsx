@@ -1,5 +1,5 @@
 import React from "react";
-import { FaArrowRight, FaRegStar, FaStar } from "react-icons/fa";
+import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
@@ -11,13 +11,15 @@ const CategoryCard = ({ car }) => {
         <img src={image} className="max-w-sm rounded-lg shadow-2xl" />
         <div>
           <h1 className="text-5xl font-bold">{toy_name}</h1>
-          <p>price: ${price}</p>
-          <p className="py-6">
+          <p className="mt-4 font-bold">
+            Price: <span className="text-orange-800 text-lg">{price}</span> $
+          </p>
+          <p className="my-2">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <div>
+          <div className="my-4">
             <Rating
               className="text-orange-700"
               placeholderRating={rating}

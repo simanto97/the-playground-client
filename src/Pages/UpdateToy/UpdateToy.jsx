@@ -106,7 +106,11 @@ const UpdateToy = () => {
           <input
             className="input input-bordered"
             placeholder="Rate 0 to 5"
-            {...register("rating", { required: true, pattern: /^0|5/ })}
+            {...register("rating", {
+              required: true,
+              min: 0,
+              max: 5,
+            })}
           />
         </label>
         <label className="input-group">

@@ -61,7 +61,7 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <img src={logo} alt="" />
+        <img className="w-1/2 md:w-full" src={logo} alt="" />
         <a className="btn btn-ghost normal-case text-xl hidden lg:block">
           The PlayGround
         </a>
@@ -70,7 +70,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        {user && <span>{user.displayName}</span>}
+        <div className="text-xs md:text-base">
+          {user && <span>{user.displayName}</span>}
+        </div>
         {user && (
           <img
             title={user.displayName}

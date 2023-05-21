@@ -5,7 +5,6 @@ import { useLoaderData } from "react-router-dom";
 
 const SingleToy = () => {
   const singleToy = useLoaderData();
-  //   console.log(singleToy);
   const {
     _id,
     toy_name,
@@ -30,8 +29,15 @@ const SingleToy = () => {
           <p>Seller Name: {seller_name}</p>
           <p>Seller Email: {seller_email}</p>
           <p>Sub-Category: {sub_category}</p>
-          <p>Price: {price}$</p>
-          <p>Available: {available_quantity}</p>
+          <p className="font-bold">
+            Price: <span className="text-orange-800 text-lg">{price}</span> $
+          </p>
+          <p className="font bold">
+            Available:
+            <span className="text-orange-800 text-lg">
+              {available_quantity}
+            </span>
+          </p>
           <div>
             <Rating
               className="text-orange-700"
@@ -40,7 +46,7 @@ const SingleToy = () => {
               emptySymbol={<FaRegStar></FaRegStar>}
               placeholderSymbol={<FaStar></FaStar>}
               fullSymbol={<FaStar></FaStar>}
-            ></Rating>{" "}
+            ></Rating>
             <span className="text-orange-700 ml-1">{rating}</span>
           </div>
           <p>Details: {description}</p>
