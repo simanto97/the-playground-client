@@ -8,7 +8,7 @@ const Customers = () => {
       .then((res) => res.json())
       .then((data) => setCustomers(data))
       .catch((error) => console.log(error));
-  });
+  }, [customers]);
   return (
     <div>
       <h2 className="text-center font-bold text-5xl my-6 p-5">

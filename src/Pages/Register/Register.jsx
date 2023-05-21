@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import registerImage from "../../assets/authentication/authentication.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
 import GoogleAuth from "../../Shared/GoogleAuth/GoogleAuth";
@@ -8,6 +8,9 @@ import toast, { Toaster } from "react-hot-toast";
 const Register = () => {
   const [accepted, setAccepted] = useState(false);
   const { createUser, updateUserProfile, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,9 +18,9 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photo, email, password);
+
     if (password.length < 6) {
-      console.log("Password need 6 char");
+      toast.error("Password need at least 6 character");
       return;
     }
     if ((email, password)) {
@@ -26,8 +29,10 @@ const Register = () => {
           updateUserProfile(name, photo)
             .then(() => {
               // profile Updated
+              toast.success("User created Successfully. Go to Home!!!");
+              navigate(from, { replace: true });
             })
-            .catch((error) => console.log(error));
+            .catch((error) => toast.error(error));
           setUser(result.user);
         })
         .catch((error) => {

@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import { Toaster, toast } from "react-hot-toast";
 
 export const AuthContext = createContext(null);
 
@@ -43,7 +44,8 @@ const AuthProvider = ({ children }) => {
         const loggedUser = result.user;
         setUser(loggedUser);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.message));
+    <Toaster />;
   };
 
   const logOut = () => {
@@ -54,7 +56,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
       setLoading(false);
-      console.log("Logged in ", loggedUser);
       setUser(loggedUser);
     });
 

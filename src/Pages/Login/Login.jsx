@@ -15,12 +15,13 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
         navigate(from, { replace: true });
         setUser(loggedUser);
+        alert(`${loggedUser.displayName} logged in successfully`);
       })
       .catch((error) => {
         toast.error(error.message.split("/")[1].split(")"[0]));
