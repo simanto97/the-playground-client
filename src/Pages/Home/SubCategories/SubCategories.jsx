@@ -13,21 +13,21 @@ const SubCategories = () => {
       .then((data) => {
         setRegularCars(data);
       });
-  }, []);
+  }, [regularCars]);
   useEffect(() => {
     fetch("https://assignment-11-server-simanto97.vercel.app/sports-car")
       .then((res) => res.json())
       .then((data) => {
         setSportsCars(data);
       });
-  }, []);
+  }, [sportsCars]);
   useEffect(() => {
     fetch("https://assignment-11-server-simanto97.vercel.app/fire-trucks")
       .then((res) => res.json())
       .then((data) => {
         setFireTrucks(data);
       });
-  }, []);
+  }, [fireTrucks]);
   return (
     <div
       data-aos="fade-right"

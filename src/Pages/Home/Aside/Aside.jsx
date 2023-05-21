@@ -17,7 +17,10 @@ const Aside = () => {
     >
       <h2 className="text-3xl font-bold italic my-6">New Addition :</h2>
       {newToys.map((newToy) => (
-        <div className="m-4 card w-[300px] bg-base-100 shadow-xl">
+        <div
+          key={newToy._id}
+          className="m-4 card w-[300px] bg-base-100 shadow-xl"
+        >
           <figure>
             <img src={newToy?.image} alt="Shoes" />
           </figure>

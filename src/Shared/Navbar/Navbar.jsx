@@ -71,14 +71,14 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <div className="text-xs md:text-base">
-          {user && <span>{user.displayName}</span>}
+          {user && <span>{user?.displayName}</span>}
         </div>
         {user && (
           <img
-            title={user.displayName}
+            title={user?.displayName}
             className="rounded-full"
             style={{ height: "50px", width: "50px" }}
-            src={user.photoURL}
+            src={user?.photoURL}
             alt="User"
           />
         )}
