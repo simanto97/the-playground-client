@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -19,6 +20,20 @@ const MyToys = () => {
         }
       });
   };
+  const handleAscending = () => {
+    fetch(
+      `https://assignment-11-server-simanto97.vercel.app/my-toys/ascending/${user.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setToys(data));
+  };
+  const handleDescending = () => {
+    fetch(
+      `https://assignment-11-server-simanto97.vercel.app/my-toys/descending/${user.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setToys(data));
+  };
 
   useEffect(() => {
     fetch(
@@ -30,6 +45,20 @@ const MyToys = () => {
 
   return (
     <div>
+      <div className="flex justify-end my-4 gap-3">
+        <button
+          onClick={handleAscending}
+          className="btn btn-primary btn-outline btn-xs sm:btn-sm md:btn-md"
+        >
+          Price <FaArrowUp></FaArrowUp>
+        </button>
+        <button
+          onClick={handleDescending}
+          className="btn btn-primary btn-outline btn-xs sm:btn-sm md:btn-md"
+        >
+          Price <FaArrowDown></FaArrowDown>
+        </button>
+      </div>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           {/* head */}

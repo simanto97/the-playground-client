@@ -92,7 +92,13 @@ const Register = () => {
                 className="input input-bordered"
               />
               <label className="label text-lg">
-                <input onClick={handleAccepted} type="checkbox" name="" id="" />
+                <input
+                  className="checkbox checkbox-success"
+                  onClick={handleAccepted}
+                  type="checkbox"
+                  name=""
+                  id=""
+                />
                 <p className="ml-2">Accept Terms and Conditions</p>
               </label>
             </div>
