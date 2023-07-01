@@ -4,30 +4,20 @@ import "react-tabs/style/react-tabs.css";
 import CategoryCard from "../CategoryCard/CategoryCard";
 
 const SubCategories = () => {
-  const [regularCars, setRegularCars] = useState([]);
-  const [sportsCars, setSportsCars] = useState([]);
-  const [fireTrucks, setFireTrucks] = useState([]);
+  const [cars, setCars] = useState([]);
   useEffect(() => {
-    fetch("https://assignment-11-server-simanto97.vercel.app/regular-cars")
+    fetch("http://localhost:5000/sub-categories")
+      .then((res) => res.json())
+      .then((data) => setCars(data));
+  }, []);
+  const handleCategories = (subCategory) => {
+    fetch(`http://localhost:5000/sub-categories?category=${subCategory}`)
       .then((res) => res.json())
       .then((data) => {
-        setRegularCars(data);
+        setCars(data);
       });
-  }, [regularCars]);
-  useEffect(() => {
-    fetch("https://assignment-11-server-simanto97.vercel.app/sports-car")
-      .then((res) => res.json())
-      .then((data) => {
-        setSportsCars(data);
-      });
-  }, [sportsCars]);
-  useEffect(() => {
-    fetch("https://assignment-11-server-simanto97.vercel.app/fire-trucks")
-      .then((res) => res.json())
-      .then((data) => {
-        setFireTrucks(data);
-      });
-  }, [fireTrucks]);
+  };
+
   return (
     <div
       data-aos="fade-right"
@@ -36,28 +26,40 @@ const SubCategories = () => {
     >
       <Tabs>
         <TabList>
-          <Tab>Regular Cars</Tab>
-          <Tab>Sports Car</Tab>
-          <Tab>Mini Fire Trucks</Tab>
+          <Tab>All</Tab>
+          <Tab onClick={() => handleCategories("Regular Cars")}>
+            Regular Cars
+          </Tab>
+          <Tab onClick={() => handleCategories("Sports Car")}>Sports Car</Tab>
+          <Tab onClick={() => handleCategories("Mini Fire Trucks")}>
+            Mini Fire Trucks
+          </Tab>
         </TabList>
 
         <TabPanel>
           <div>
-            {regularCars.map((car) => (
+            {cars.map((car) => (
               <CategoryCard key={car._id} car={car}></CategoryCard>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
           <div>
-            {sportsCars.map((car) => (
+            {cars.map((car) => (
               <CategoryCard key={car._id} car={car}></CategoryCard>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
           <div>
-            {fireTrucks.map((car) => (
+            {cars.map((car) => (
+              <CategoryCard key={car._id} car={car}></CategoryCard>
+            ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div>
+            {cars.map((car) => (
               <CategoryCard key={car._id} car={car}></CategoryCard>
             ))}
           </div>
