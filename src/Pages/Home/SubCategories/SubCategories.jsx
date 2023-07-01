@@ -6,12 +6,14 @@ import CategoryCard from "../CategoryCard/CategoryCard";
 const SubCategories = () => {
   const [cars, setCars] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/sub-categories")
+    fetch("https://assignment-11-server-simanto97.vercel.app/sub-categories")
       .then((res) => res.json())
       .then((data) => setCars(data));
   }, []);
   const handleCategories = (subCategory) => {
-    fetch(`http://localhost:5000/sub-categories?category=${subCategory}`)
+    fetch(
+      `https://assignment-11-server-simanto97.vercel.app/sub-categories?category=${subCategory}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCars(data);
